@@ -4,13 +4,12 @@
     <title>Task Manager</title>
 
     <!-- AngularJS CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+    <script src="angular.min.js"></script>
 
     <script src="taskModule.js"></script>
 </head>
 
 <body ng-controller="taskCtrl">
-
 
 <center>
 
@@ -59,6 +58,9 @@
     </tr>
 
     <!-- <tr ng-repeat="item in task"> -->
+    <!-- <tr ng-repeat="item in task | orderBy:'taskName' | limitTo:pageSize:currentPage*pageSize"> -->
+    <!-- <tr ng-repeat="item in task | orderBy:'taskName':true | limitTo:pageSize:currentPage*pageSize"> -->
+
     <tr ng-repeat="item in task.slice(currentPage*pageSize, (currentPage+1)*pageSize)">
         <td>{{item.taskID}}</td>
         <td>{{item.taskName}}</td>
