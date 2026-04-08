@@ -9,45 +9,13 @@
     <script src="taskModule.js"></script>
 </head>
 
-<body ng-controller="taskCtrl" style="background-color: bisque;">
+<body ng-controller="taskCtrl">
 
-<h1 style="background-color:black; color:white; text-align:center;">
+<h1>
     Task Details
 </h1>
 
 <center>
-<table border="3">
-    <tr>
-        <th>Task ID</th>
-        <th>Task Name</th>
-        <th>Status</th>
-        <th>Action</th>
-        <th>Date</th>
-        <th>Category</th>
-        <th>Roles</th>
-    </tr>
-
-    <!-- <tr ng-repeat="item in task"> -->
-    <tr ng-repeat="item in task.slice(currentPage*pageSize, (currentPage+1)*pageSize)">
-        <td>{{item.taskID}}</td>
-        <td>{{item.taskName}}</td>
-        <td>{{item.status}}</td>
-        <td>{{item.date}}</td>
-        <td>{{item.category}}</td>
-        <td>{{item.roles.join(', ')}}</td>
-        <td>
-            <button ng-click="deleteTask(item.taskID)">Delete</button>
-            <button ng-click="edit(item)">Edit</button>
-        </td>
-    </tr>
-</table>
-
-<br>
-<!-- can remove -->
-<button ng-click="prevPage()">Previous</button>
-<button ng-click="nextPage()">Next</button>
-
-<br>
 
 <form ng-submit="addNewTask(newTask)">
     <h2>Add / Update Task</h2>
@@ -82,6 +50,40 @@
     <button type="submit" ng-disabled="editStat">Add Task</button>
     <button type="button" ng-click="updateTask(newTask)" ng-disabled="!editStat">Update Task</button>
 </form>
+
+    <table border="3">
+    <tr>
+        <th>Task ID</th>
+        <th>Task Name</th>
+        <th>Status</th>
+        <th>Action</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Roles</th>
+    </tr>
+
+    <!-- <tr ng-repeat="item in task"> -->
+    <tr ng-repeat="item in task.slice(currentPage*pageSize, (currentPage+1)*pageSize)">
+        <td>{{item.taskID}}</td>
+        <td>{{item.taskName}}</td>
+        <td>{{item.status}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.roles.join(', ')}}</td>
+        <td>
+            <button ng-click="deleteTask(item.taskID)">Delete</button>
+            <button ng-click="edit(item)">Edit</button>
+        </td>
+    </tr>
+</table>
+
+<br>
+<!-- can remove -->
+<button ng-click="prevPage()">Previous</button>
+<button ng-click="nextPage()">Next</button>
+
+<br>
+
 
 </center>
 
