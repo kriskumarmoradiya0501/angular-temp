@@ -1,0 +1,12 @@
+first install nord.js in your pc
+
+than create folder "TaskApp"
+powershell npm init -y
+npm install express
+
+in TaskApp
+server.js
+View.html
+taskModule.js
+
+node server.js
