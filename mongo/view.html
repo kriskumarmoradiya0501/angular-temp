@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="itemApp">
+<head>
+    <title>Item App</title>
+
+    <script src="angular.min.js"></script>
+    <script src="taskModule.js"></script>
+</head>
+
+<body ng-controller="itemCtrl">
+
+<center>
+
+<form ng-submit="addItem()">
+
+Name: <input type="text" ng-model="newItem.name" required><br><br>
+Age: <input type="number" ng-model="newItem.age" required><br><br>
+
+Gender:
+<input type="radio" ng-model="newItem.gender" value="Male"> Male
+<input type="radio" ng-model="newItem.gender" value="Female"> Female
+<input type="radio" ng-model="newItem.gender" value="Other"> Other
+<br><br>
+
+DOB:
+<input type="date" ng-model="newItem.dob"><br><br>
+
+Stream:
+<select ng-model="newItem.stream">
+    <option value="Science">Science</option>
+    <option value="Commerce">Commerce</option>
+</select><br><br>
+
+Marks:<br>
+English: <input type="number" ng-model="newItem.english"><br>
+Gujarati: <input type="number" ng-model="newItem.gujarati"><br>
+Hindi: <input type="number" ng-model="newItem.hindi"><br><br>
+
+Hobbies:
+<input type="checkbox" ng-model="hobbies.reading"> Reading
+<input type="checkbox" ng-model="hobbies.sports"> Sports
+<input type="checkbox" ng-model="hobbies.music"> Music
+<br><br>
+
+<button type="submit" ng-disabled="editStat">Add</button>
+<button type="button" ng-click="updateItem(newItem)" ng-disabled="!editStat">Update</button>
+
+</form>
+
+<br>
+
+<h3 style="color:red">{{message}}</h3>
+
+<table border="2">
+<tr>
+<th>Name</th>
+<th>Age</th>
+<th>Gender</th>
+<th>DOB</th>
+<th>Stream</th>
+<th>Marks</th>
+<th>Hobbies</th>
+<th>Total</th>
+<th>Percentage</th>
+<th>Grade</th>
+<th>Action</th>
+
+</tr>
+
+<!-- <tr ng-repeat="item in items | orderBy:['name','-percentage']"></tr> -->
+<!-- <tr ng-repeat="item in items | orderBy:'-percentage'"></tr> -->
+<tr ng-repeat="item in items">
+<td>{{item.name}}</td>
+<td>{{item.age}}</td>
+<td>{{item.gender}}</td>
+<td>{{item.dob}}</td>
+<td>{{item.stream}}</td>
+<td>{{item.english}}, {{item.gujarati}}, {{item.hindi}}</td>
+<td>{{item.hobbies.join(', ')}}</td>
+<td>{{item.total}}</td>
+<td>{{item.percentage}}</td>
+<td>{{item.grade}}</td>
+<td>
+    <button ng-click="edit(item)">Edit</button>
+    <button ng-click="deleteItem(item._id)">Delete</button>
+</td>
+</tr>
+
+</table>
+
+</center>
+
+</body>
+</html>
